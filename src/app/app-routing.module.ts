@@ -4,6 +4,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { TvSeriesComponent } from './components/tv-series/tv-series.component';
 import { MoviesComponent } from './components/movies/movies.component';
 import { DetailComponent } from './components/detail/detail.component';
+import { FavoritesComponent } from './components/favorites/favorites.component';
 
 const routes: Routes = [
   {
@@ -19,8 +20,12 @@ const routes: Routes = [
     component: MoviesComponent,
   },
   {
-    path: 'DetailComponent/:id',
+    path: 'detail/:type/:id',
     component: DetailComponent,
+  },
+  {
+    path: 'favs',
+    component: FavoritesComponent,
   },
   {
     //Si se equivoca, etc
