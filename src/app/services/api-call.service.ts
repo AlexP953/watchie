@@ -2,9 +2,10 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs';
 import { audiovisual, audiovisualDetail } from '../interfaces/audiovisual';
+import { environment } from 'src/environments/environment';
 
 const LINK = 'https://api.themoviedb.org/3/';
-const APIKEY = 'c6aeee577586ba38e487b74dfede5deb';
+const APIKEY = environment.apiKey;
 const LANG = 'es-ES';
 @Injectable({
   providedIn: 'root',
