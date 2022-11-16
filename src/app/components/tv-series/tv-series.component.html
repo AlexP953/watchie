@@ -1,0 +1,10 @@
+<div *ngIf="audiovisual" style="    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;">
+    <div *ngFor="let data of audiovisual" style="display: flex;">
+        <div (click)="getDetail(data.id, 'tv')">
+            <img style="width: 25%;" src="https://image.tmdb.org/t/p/original{{data.poster_path}}">
+            <p>{{data.name}}</p>
+            <p>{{data.vote_average}}</p>
+        </div>
+    </div>
+</div>
