@@ -1,0 +1,65 @@
+
+TOP 10 NOVEDADES movie
+<div
+  *ngIf="movies"
+  style="display: grid; grid-template-columns: 1fr 1fr 1fr"
+>
+  <div *ngFor="let data of movies| slice:0:10" style="display: flex">
+    <div >
+      <img
+        style="width: 25%"
+        src="https://image.tmdb.org/t/p/original{{ data.poster_path }}"
+        (click)="navigateTo(data.id,'movie')"
+      />
+      <p (click)="navigateTo(data.id,'movie')">{{ data.name }}</p>
+      <div>{{ data.vote_average }}</div>
+      <div>
+        <div>
+          <fa-icon
+            *ngIf="!data.isFavorite"
+            (click)="addToFavorites(data,'movie')"
+            [icon]="['far', 'heart']"
+          ></fa-icon>
+          <fa-icon
+            *ngIf="data.isFavorite"
+            (click)="deleteToFavorites(data,'movie')"
+            [icon]="['fas', 'heart']"
+          ></fa-icon>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+TOP 10 NOVEDADES serie
+
+<div
+  *ngIf="tvSeries"
+  style="display: grid; grid-template-columns: 1fr 1fr 1fr"
+>
+  <div *ngFor="let data of tvSeries| slice:0:10" style="display: flex">
+    <div >
+      <img
+        style="width: 25%"
+        src="https://image.tmdb.org/t/p/original{{ data.poster_path }}"
+        (click)="navigateTo(data.id,'tv')"
+      />
+      <p (click)="navigateTo(data.id,'tv')">{{ data.name }}</p>
+      <div>{{ data.vote_average }}</div>
+      <div>
+        <div>
+          <fa-icon
+            *ngIf="!data.isFavorite"
+            (click)="addToFavorites(data,'tv')"
+            [icon]="['far', 'heart']"
+          ></fa-icon>
+          <fa-icon
+            *ngIf="data.isFavorite"
+            (click)="deleteToFavorites(data,'tv')"
+            [icon]="['fas', 'heart']"
+          ></fa-icon>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

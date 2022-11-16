@@ -5,6 +5,7 @@ export interface audiovisual {
   overview: string;
   poster_path: string;
   vote_average: number;
+  isFavorite?: boolean;
 }
 
 export interface audiovisualDetail {
@@ -17,4 +18,5 @@ export interface audiovisualDetail {
   overview?: string;
   poster_path?: string;
   vote_average?: number;
+  isFavorite?:boolean
 }

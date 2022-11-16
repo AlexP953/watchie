@@ -29,7 +29,7 @@ export class APICallService {
     }
   }
 
-  getDetail(id: number, type: string) {
+  getDetail(id: number | null, type: string | null) {
     // Recibe el detalle de lo que has pedido. 'type' es si es 'tv o 'movie' e 'id' es el ID del elemento. Luego pasa por un pipe para limpiar la información y quitar los datos inservibles.
     
     if (type === 'tv') {

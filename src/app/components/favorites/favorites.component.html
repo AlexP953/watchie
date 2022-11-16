@@ -1,0 +1,34 @@
+Series
+<div *ngIf="tvFavs.length > 1">
+  <div
+    *ngFor="let data of tvFavs"
+    style="display: grid; grid-template-columns: 1fr 1fr 1fr"
+  >
+    <img
+    (click)="navigateTo(data.id,'tv')"
+      style="width: 25%"
+      src="https://image.tmdb.org/t/p/original{{ data.poster_path }}"
+    />
+    <p (click)="navigateTo(data.id,'tv')">{{ data.name }}</p>
+    <div>{{ data.vote_average }}</div>
+    <div></div>
+  </div>
+</div>
+
+Pelis
+
+<div *ngIf="movieFavs.length > 1">
+  <div
+    *ngFor="let data of movieFavs"
+    style="display: grid; grid-template-columns: 1fr 1fr 1fr"
+  >
+    <img
+    (click)="navigateTo(data.id,'movie')"
+      style="width: 25%"
+      src="https://image.tmdb.org/t/p/original{{ data.poster_path }}"
+    />
+    <p (click)="navigateTo(data.id,'movie')">{{ data.name }}</p>
+    <div>{{ data.vote_average }}</div>
+    <div></div>
+  </div>
+</div>
