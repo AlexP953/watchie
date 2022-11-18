@@ -1,0 +1,67 @@
+@import "../../../styles.scss";
+
+.container {
+    .card {
+        width: 55%;
+        margin: 35px auto;
+        display: grid;
+        grid-template-columns: 1fr 4fr;
+        border-radius: 12px;
+        box-shadow: 10px 10px 20px -10px rgb(0 0 0 / 75%);
+
+        .poster {
+            width: 350px;
+
+            img {
+                width: 100%;
+                margin: 5%;
+            }
+        }
+
+        .name-votes {
+            display: flex;
+            justify-content: space-between;
+            margin: 5% 10%;
+
+            .name {
+                font-size: 4rem;
+            }
+
+            .manage-div {
+                display: flex;
+                position: relative;
+                right: 0;
+            }
+
+            .votes {
+                font-size: 30px;
+                font-weight: bolder;
+            }
+
+            .fav-button {
+                margin: 0 25%;
+
+                fa-icon {
+                    font-size: 2rem;
+                }
+
+                .noFav {
+                    color: black;
+                }
+
+                .fav {
+                    color: $primaryOrange;
+                }
+            }
+        }
+
+        .info {
+            margin: 0 10%;
+        }
+
+        .overview {
+            margin: 10%;
+        }
+    }
+
+}

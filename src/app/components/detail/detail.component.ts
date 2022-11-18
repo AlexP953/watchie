@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { APICallService } from '../../services/api-call.service';
-import { ActivatedRoute, } from '@angular/router';
+import { ManageElementsService } from 'src/app/services/manage-elements.service';
+import { ActivatedRoute } from '@angular/router';
 import { audiovisualDetail } from 'src/app/interfaces/audiovisual';
 
 @Component({
@@ -9,11 +10,16 @@ import { audiovisualDetail } from 'src/app/interfaces/audiovisual';
   styleUrls: ['./detail.component.scss'],
 })
 export class DetailComponent implements OnInit {
-  constructor(public apiCall: APICallService, private route: ActivatedRoute) {}
+  constructor(
+    public apiCall: APICallService,
+    private route: ActivatedRoute,
+    private ManageElementsService: ManageElementsService
+  ) {}
 
   id: string | null = '';
   type: string | null = '';
   audiovisual: audiovisualDetail = {};
+  approbed: boolean = false;
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id');
@@ -23,6 +29,17 @@ export class DetailComponent implements OnInit {
       .getDetail(Number(this.id), this.type)
       .subscribe((detail: any) => {
         this.audiovisual = detail;
+        if (detail.vote_average > 5) {
+          this.approbed = true;
+        }
       });
+  }
+
+  addToFavorites(element: audiovisualDetail) {
+    this.ManageElementsService.addToFavorites(element, this.type!);
+  }
+
+  deleteToFavorites(element: audiovisualDetail) {
+    this.ManageElementsService.deleteToFavorites(element, this.type!);
   }
 }

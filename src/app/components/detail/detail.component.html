@@ -1,4 +1,57 @@
-<div>{{audiovisual.id}}</div>
-<div>{{audiovisual.name}}</div>
-<div>{{audiovisual.overview}}</div>
-<div>{{audiovisual.vote_average}}</div>
+<div class="component container">
+  <div class="card">
+    <div class="poster">
+      <img
+        src="https://image.tmdb.org/t/p/original{{ audiovisual.poster_path }}"
+      />
+    </div>
+    <div class="data">
+      <div class="name-votes">
+        <div class="name">{{ audiovisual.name }}</div>
+        <div class="manage-div">
+          <div class="votes" [ngStyle]="{ color: approbed ? 'green' : 'red' }">
+            {{ audiovisual.vote_average | number: "1.1-1" }}
+          </div>
+          <div class="fav-button">
+            <div>
+              <fa-icon
+                class="noFav"
+                *ngIf="!audiovisual.isFavorite"
+                (click)="addToFavorites(audiovisual)"
+                [icon]="['far', 'heart']"
+              ></fa-icon>
+              <fa-icon
+                class="fav"
+                *ngIf="audiovisual.isFavorite"
+                (click)="deleteToFavorites(audiovisual)"
+                [icon]="['fas', 'heart']"
+              ></fa-icon>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="info">
+        <div *ngIf="audiovisual.release_date">
+          Año: {{ audiovisual.release_date | date: "yyyy" }}
+        </div>
+        <div>
+          Género/s:
+          <span *ngFor="let genre of audiovisual.genres"
+            >{{ genre["name"] }},
+          </span>
+        </div>
+        <div *ngIf="audiovisual.number_of_seasons">
+          Temporadas: {{ audiovisual.number_of_seasons }}
+        </div>
+        <div *ngIf="audiovisual.number_of_episodes">
+          Número de episodios: {{ audiovisual.number_of_episodes }}
+        </div>
+      </div>
+
+      <div class="overview">
+        <div>{{ audiovisual.overview }}</div>
+      </div>
+    </div>
+  </div>
+</div>

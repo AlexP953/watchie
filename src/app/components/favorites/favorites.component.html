@@ -1,34 +1,45 @@
-Series
-<div *ngIf="tvFavs.length > 1">
-  <div
-    *ngFor="let data of tvFavs"
-    style="display: grid; grid-template-columns: 1fr 1fr 1fr"
-  >
-    <img
-    (click)="navigateTo(data.id,'tv')"
-      style="width: 25%"
-      src="https://image.tmdb.org/t/p/original{{ data.poster_path }}"
-    />
-    <p (click)="navigateTo(data.id,'tv')">{{ data.name }}</p>
-    <div>{{ data.vote_average }}</div>
-    <div></div>
+<div class="component">
+  <div class="container" *ngIf="tvFavs">
+    <h2>Series</h2>
+
+    <div class="category">
+      <div *ngFor="let data of tvFavs" class="card">
+        <img
+          src="https://image.tmdb.org/t/p/original{{ data.poster_path }}"
+          (click)="navigateTo(data.id, 'tv')"
+        />
+        <div class="fav-button">
+          <div>
+            <fa-icon
+              class="fav"
+              (click)="deleteToFavorites(data,'tv')"
+              [icon]="['fas', 'heart']"
+            ></fa-icon>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
 
-Pelis
+  <div class="container">
+    <h2>Películas</h2>
 
-<div *ngIf="movieFavs.length > 1">
-  <div
-    *ngFor="let data of movieFavs"
-    style="display: grid; grid-template-columns: 1fr 1fr 1fr"
-  >
-    <img
-    (click)="navigateTo(data.id,'movie')"
-      style="width: 25%"
-      src="https://image.tmdb.org/t/p/original{{ data.poster_path }}"
-    />
-    <p (click)="navigateTo(data.id,'movie')">{{ data.name }}</p>
-    <div>{{ data.vote_average }}</div>
-    <div></div>
+    <div *ngIf="movieFavs" class="category">
+      <div *ngFor="let data of movieFavs" class="card">
+        <img
+          src="https://image.tmdb.org/t/p/original{{ data.poster_path }}"
+          (click)="navigateTo(data.id, 'movie')"
+        />
+        <div class="fav-button">
+          <div>
+            <fa-icon
+              class="fav"
+              (click)="deleteToFavorites(data,'movie')"
+              [icon]="['fas', 'heart']"
+            ></fa-icon>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

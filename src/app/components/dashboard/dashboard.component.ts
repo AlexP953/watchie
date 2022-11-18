@@ -12,8 +12,7 @@ import { Router } from '@angular/router';
 })
 export class DashboardComponent implements OnInit {
   faHeart = faHeart;
-  movies: audiovisual[] = [];
-  tvSeries: audiovisual[] = [];
+  audiovisuales: audiovisual[] = [];
   tvFavs: audiovisualDetail[] = [];
   movieFavs: audiovisualDetail[] = [];
 
@@ -27,22 +26,25 @@ export class DashboardComponent implements OnInit {
     this.ManageElementsService.favCine$.subscribe((data) => {
       this.movieFavs = data;
     });
-    this.apiCall.getPopular('movie').subscribe((data: any) => {
-      this.movies = data;
-      this.movies.sort(
-        (a: audiovisual, b: audiovisual) => b.vote_average - a.vote_average
-      );
+    this.ManageElementsService.favCine$.subscribe((data) => {
+      this.tvFavs = data;
     });
-        this.ManageElementsService.favCine$.subscribe((data) => {
-          this.tvFavs = data;
-        });
-        this.apiCall.getPopular('tv').subscribe((data: any) => {
-          this.tvSeries = data;
-                this.tvSeries.sort(
-                  (a: audiovisual, b: audiovisual) =>
-                    b.vote_average - a.vote_average
-                );
-        });
+
+    this.apiCall.getPopular('movie').subscribe((data: any) => {
+      data.map((x: audiovisual) => {
+        x.type = 'movie';
+        this.audiovisuales.push(x);
+      });
+    });
+    this.apiCall.getPopular('tv').subscribe((data: any) => {
+      data.map((x: audiovisual) => {
+        this.audiovisuales.push(x);
+        x.type = 'tv';
+      });
+          this.audiovisuales.sort(function () {
+            return Math.random() - 0.5;
+          });
+    });
   }
 
   addToFavorites(element: audiovisual, type: string) {
