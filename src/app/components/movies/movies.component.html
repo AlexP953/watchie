@@ -1,24 +1,20 @@
-<div
-  *ngIf="audiovisual"
-  style="display: grid; grid-template-columns: 1fr 1fr 1fr"
->
-  <div *ngFor="let data of audiovisual" style="display: flex">
-    <div >
+<div class="component">
+  <div *ngIf="audiovisual" class="container">
+    <div *ngFor="let data of audiovisual" class="card">
       <img
-        style="width: 25%"
         src="https://image.tmdb.org/t/p/original{{ data.poster_path }}"
-        (click)="navigateTo(data.id,'movie')"
+        (click)="navigateTo(data.id, 'movie')"
       />
-      <p (click)="navigateTo(data.id,'movie')">{{ data.name }}</p>
-      <div>{{ data.vote_average }}</div>
-      <div>
+      <div class="fav-button">
         <div>
           <fa-icon
+            class="noFav"
             *ngIf="!data.isFavorite"
             (click)="addToFavorites(data)"
             [icon]="['far', 'heart']"
           ></fa-icon>
           <fa-icon
+            class="fav"
             *ngIf="data.isFavorite"
             (click)="deleteToFavorites(data)"
             [icon]="['fas', 'heart']"

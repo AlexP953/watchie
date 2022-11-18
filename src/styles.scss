@@ -1,1 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
+
+$primaryOrange: #F6A435;
+$secondaryOrange: #FDCF98;
+$liteOrange: #f9f1e8;
+
+$charcoal: #36454F;
+$secondaryCharcoal: #577381;
+$liteCharcoal: #e7f6ff;
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    font-family: 'Lato', sans-serif;
+}
+
+.component {
+    height: 100%;
+    width: 100%;
+    min-height: 675px;
+}

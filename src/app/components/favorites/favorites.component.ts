@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class FavoritesComponent implements OnInit {
   tvFavs: audiovisualDetail[] = [];
-  movieFavs: audiovisualDetail[] = [{}];
+  movieFavs: audiovisualDetail[] = [];
 
   constructor(
     public ManageElementsService: ManageElementsService,
@@ -27,7 +27,11 @@ export class FavoritesComponent implements OnInit {
     });
   }
 
-  navigateTo(idEscogida:number | undefined , type: string) {
+  navigateTo(idEscogida: number | undefined, type: string) {
     this.router.navigate(['detail', type, idEscogida]);
+  }
+
+  deleteToFavorites(element: audiovisualDetail, category: string) {
+    this.ManageElementsService.deleteToFavorites(element, category);
   }
 }
